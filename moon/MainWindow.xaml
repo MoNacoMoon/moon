@@ -1,0 +1,132 @@
+<Window x:Class="moon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:moon"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="820" Width="800"
+        WindowStartupLocation="CenterScreen" Background="#F0F0F0"
+        Loaded="Window_Loaded">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя служебная панель -->
+        <DockPanel Grid.Row="0" Margin="0,0,0,10">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="Список пользователей" Padding="10,4" Margin="5,0" Click="btnOpenUserWin_Click"/>
+                <Button Content="Отладка (ПР 10-11)" Padding="10,4" Margin="5,0" Click="btnOpenDebug_Click"/>
+            </StackPanel>
+        </DockPanel>
+
+        <!-- Карточка формы регистрации -->
+        <Border Grid.Row="1" Background="White" BorderBrush="#D0D0D0" BorderThickness="1" Padding="25">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="280"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Заголовок формы -->
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Персональная информация" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
+
+                    <!-- Фамилия -->
+                    <StackPanel Grid.Row="1" Grid.Column="0" Margin="0,0,0,10">
+                        <TextBlock Text="Фамилия" Margin="0,0,0,3"/>
+                        <TextBox x:Name="lName" Height="26" VerticalContentAlignment="Center" Text="Иванов"/>
+                    </StackPanel>
+
+                    <!-- Имя -->
+                    <StackPanel Grid.Row="2" Grid.Column="0" Margin="0,0,0,10">
+                        <TextBlock Text="Имя" Margin="0,0,0,3"/>
+                        <TextBox x:Name="name" Height="26" VerticalContentAlignment="Center" Text="Иван"/>
+                    </StackPanel>
+
+                    <!-- E-mail -->
+                    <StackPanel Grid.Row="3" Grid.Column="0" Margin="0,0,0,10">
+                        <TextBlock Text="E-mail (логин)" Margin="0,0,0,3"/>
+                        <TextBox x:Name="eMail" Height="26" VerticalContentAlignment="Center" Text="ivanov@gmail.com"/>
+                    </StackPanel>
+
+                    <!-- Пароль -->
+                    <StackPanel Grid.Row="4" Grid.Column="0" Margin="0,0,0,10">
+                        <TextBlock Text="Пароль" Margin="0,0,0,3"/>
+                        <PasswordBox x:Name="passw" Height="26" VerticalContentAlignment="Center" Password="Password123"/>
+                    </StackPanel>
+
+                    <!-- Повторить пароль -->
+                    <StackPanel Grid.Row="5" Grid.Column="0" Margin="0,0,0,10">
+                        <TextBlock Text="Повторить пароль" Margin="0,0,0,3"/>
+                        <PasswordBox x:Name="passwRepeat" Height="26" VerticalContentAlignment="Center" Password="Password123"/>
+                    </StackPanel>
+
+                    <!-- Подсказка справа -->
+                    <Border Grid.Row="5" Grid.Column="2" BorderBrush="#007ACC" BorderThickness="1" Padding="8" VerticalAlignment="Center">
+                        <TextBlock Text="Минимальная длина пароля 6 символов" Foreground="#005A9E"/>
+                    </Border>
+
+                    <!-- Кодовое слово -->
+                    <StackPanel Grid.Row="6" Grid.Column="0" Margin="0,0,0,10">
+                        <TextBlock Text="Кодовое слово (одно слово)" Margin="0,0,0,3"/>
+                        <TextBox x:Name="word" Height="26" VerticalContentAlignment="Center" Text="фунтик"/>
+                    </StackPanel>
+
+                    <!-- Условия пароля справа -->
+                    <StackPanel Grid.Row="6" Grid.Column="2" VerticalAlignment="Center">
+                        <TextBlock Text="Условия пароля 1" Foreground="#555555" Margin="0,1"/>
+                        <TextBlock Text="Условия пароля 2" Foreground="#555555" Margin="0,1"/>
+                        <TextBlock Text="Условия пароля 3" Foreground="#555555" Margin="0,1"/>
+                        <TextBlock Text="Условия пароля 4" Foreground="#555555" Margin="0,1"/>
+                    </StackPanel>
+
+                    <!-- Секретный вопрос -->
+                    <StackPanel Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,10">
+                        <TextBlock Text="Секретный вопрос для восстановления пароля" FontWeight="Bold" Margin="0,0,0,4"/>
+                        <TextBlock Text="Секретный вопрос" Margin="0,0,0,3"/>
+                        <ComboBox x:Name="qwest" Height="26" Width="320" HorizontalAlignment="Left"/>
+                    </StackPanel>
+
+                    <!-- Ответ на вопрос -->
+                    <StackPanel Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,0,0,10">
+                        <TextBlock Text="Ответ на вопрос" Margin="0,0,0,3"/>
+                        <TextBox x:Name="otvet" Height="26" Width="320" HorizontalAlignment="Left" Text="Париж"/>
+                    </StackPanel>
+
+                    <!-- Чекбокс согласия -->
+                    <CheckBox x:Name="chkAgree" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="3" Content="Согласен с условиями" IsChecked="True" Margin="0,8,0,12"/>
+
+                    <!-- Кнопка ДАЛЕЕ с градиентом -->
+                    <Button x:Name="btnSubmit" Grid.Row="10" Grid.Column="0" Height="36" Width="220" HorizontalAlignment="Left"
+                            Content="ДАЛЕЕ" Foreground="White" FontWeight="Bold" Cursor="Hand" Click="SignIn_Click">
+                        <Button.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="#202020" Offset="0.0"/>
+                                <GradientStop Color="#383838" Offset="0.5"/>
+                                <GradientStop Color="#C09020" Offset="0.85"/>
+                                <GradientStop Color="#DFB020" Offset="1.0"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                </Grid>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Window>

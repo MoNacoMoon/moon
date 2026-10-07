@@ -1,0 +1,11 @@
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+*.suo
+*.tmp
+git_labs_workspace/
+__pycache__/
+*.docx
+*.py
+screenshots/
