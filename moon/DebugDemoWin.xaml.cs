@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Windows;
 
 namespace moon
@@ -20,6 +21,7 @@ namespace moon
             btnRunLoop_Click(this, new RoutedEventArgs());
             btnThrowCustom_Click(this, new RoutedEventArgs());
             btnThrowDivZero_Click(this, new RoutedEventArgs());
+            btnDebugClasses_Click(this, new RoutedEventArgs());
         }
 
         private void Log(string message)
@@ -99,6 +101,29 @@ namespace moon
             {
                 Log("Блок finally завершен.\n");
             }
+        }
+
+        private void btnDebugClasses_Click(object sender, RoutedEventArgs e)
+        {
+            Log("=== Тестирование отладочных классов (Debug / Trace / Stopwatch) ===");
+            Debug.WriteLine("[DEBUG] Вызов метода btnDebugClasses_Click начат.");
+            Trace.WriteLine("[TRACE] Фиксация контрольной точки в журнале трассировки.");
+
+            int usersCount = 5;
+            Debug.Assert(usersCount > 0, "Количество записей пользователей должно быть больше нуля");
+            Log($"Debug.Assert: условие (usersCount > 0) истинно (проверено {usersCount} записей).");
+
+            Stopwatch sw = Stopwatch.StartNew();
+            double sum = 0.0;
+            for (int i = 0; i < 50000; i++)
+            {
+                sum += Math.Sqrt(i);
+            }
+            sw.Stop();
+
+            Debug.WriteLine($"[DEBUG] Вычисление контрольной суммы завершено за {sw.ElapsedMilliseconds} мс.");
+            Log($"Stopwatch: время расчета 50 000 итераций = {sw.ElapsedMilliseconds} мс.");
+            Log($"Debug.WriteLine и Trace.WriteLine отправили сообщения в окно отладки Visual Studio (Output).\n");
         }
 
         private void btnClearLog_Click(object sender, RoutedEventArgs e)

@@ -20,6 +20,7 @@
             <Button Content="Выполнить цикл (F9)" Padding="10,4" Margin="3" Click="btnRunLoop_Click"/>
             <Button Content="Тест исключения" Padding="10,4" Margin="3" Click="btnThrowCustom_Click"/>
             <Button Content="Деление на 0" Padding="10,4" Margin="3" Click="btnThrowDivZero_Click"/>
+            <Button Content="Отладочные классы (Debug/Trace)" Padding="10,4" Margin="3" Click="btnDebugClasses_Click"/>
             <Button Content="Очистить" Padding="10,4" Margin="3" Click="btnClearLog_Click"/>
         </WrapPanel>
 
